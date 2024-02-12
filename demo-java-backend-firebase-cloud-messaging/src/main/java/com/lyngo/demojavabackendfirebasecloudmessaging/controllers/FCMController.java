@@ -1,9 +1,13 @@
 package com.lyngo.demojavabackendfirebasecloudmessaging.controllers;
 
-import com.lyngo.demojavabackendfirebasecloudmessaging.services.FCMService;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.lyngo.demojavabackendfirebasecloudmessaging.services.FCMService;
 
 @RestController
 public class FCMController {
@@ -13,7 +17,7 @@ public class FCMController {
         this.fcmService = fcmService;
     }
 
-    @GetMapping(path = "/message/device/{id}")
+    @PostMapping(path = "/message/device/{id}")
     public void sendMessage(@PathVariable String id){
         fcmService.sendMessage(id);
     }

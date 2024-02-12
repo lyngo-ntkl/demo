@@ -22,9 +22,10 @@ class _AuthScreenState extends State<AuthScreen> {
     }
     // final credential = await FirebaseAuth.instance
     // .signInWithEmailAndPassword(email: _email, password: _password);
-    final a = await FirebaseAuth.instance
-        .createUserWithEmailAndPassword(email: _email, password: _password);
+    // final a = await FirebaseAuth.instance
+    //     .createUserWithEmailAndPassword(email: _email, password: _password);
     final registrationToken = await FirebaseMessaging.instance.getToken();
+
     print(registrationToken);
   }
 
