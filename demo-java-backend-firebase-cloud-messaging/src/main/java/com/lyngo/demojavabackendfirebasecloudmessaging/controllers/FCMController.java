@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lyngo.demojavabackendfirebasecloudmessaging.services.FCMService;
@@ -26,4 +27,15 @@ public class FCMController {
     public void sendMessages(@RequestBody List<String> tokens){
         fcmService.sendMessageToMultipleUser(tokens);
     }
+
+    @PostMapping(path = "/message/topic/{topic}")
+    public void sendMessageToTopic(@PathVariable String topic) {
+        fcmService.sendMessageToTopic(topic);
+    }
+    
+    @PostMapping(path = "/message/topic/subscribe")
+    public void subscribeTopic(@RequestParam(name = "topic") String topic, @RequestParam(name = "token") String token) {
+        fcmService.subscribeTopic(topic, token);
+    }
+    
 }
